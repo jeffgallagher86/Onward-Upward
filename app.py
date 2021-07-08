@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -24,6 +25,10 @@ mongo = PyMongo(app)
 def get_treks():
     treks = mongo.db.treks.find()
     return render_template("treks.html", treks=treks)
+
+@app.route("/join", methods=["GET", "POST"])
+def join():
+    return render_template("join.html")
 
 
 if __name__ == "__main__":

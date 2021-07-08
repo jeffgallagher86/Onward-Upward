@@ -3,13 +3,16 @@
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
     font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
     font-family: 'Lato', sans-serif;
-}
+  }
+
+/* ------------ Navbar ------------------ */
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -18,4 +21,12 @@ body {
 .brand-logo {
     font-family: 'Josefin Sans', sans-serif;
 }
+
+/* -------------- Footer ----------------- */
+
+.page-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
 
