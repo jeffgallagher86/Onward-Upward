@@ -26,8 +26,34 @@ def get_treks():
     treks = mongo.db.treks.find()
     return render_template("treks.html", treks=treks)
 
+
 @app.route("/join", methods=["GET", "POST"])
 def join():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        existing_email = mongo.db.users.find_one(
+            {"email": request.form.get("email").lower()})
+
+        if existing_user:
+            flash("This Username is Taken")
+            return redirect(url_for("join"))
+        elif existing_email:
+            flash("This Email is Taken")
+            return redirect(url_for("join"))
+
+        register = {
+            "fname": request.form.get("fname").lower(),
+            "lname": request.form.get("lname").lower(),
+            "email": request.form.get("email").lower(),
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        # put new user into session cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
     return render_template("join.html")
 
 

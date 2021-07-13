@@ -19,7 +19,7 @@ body {
 
 main {
     flex: 1 0 auto;
-  }
+}
 
 /* ------------ Navbar ------------------ */
 
@@ -33,5 +33,8 @@ main {
 
 /* --------  Join Page -----------*/
 
+.flashes h4 {
+    line-height: 2;
+}
 
-
+/* ---------- Footer -----------*/
