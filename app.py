@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_treks")
 def get_treks():
-    treks = mongo.db.treks.find()
+    treks = list(mongo.db.treks.find())
     return render_template("treks.html", treks=treks)
 
 

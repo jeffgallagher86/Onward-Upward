@@ -37,4 +37,25 @@ main {
     line-height: 2;
 }
 
-/* ---------- Footer -----------*/
+.material-tooltip {
+    background-color: #3eff48;
+  }
+
+/* ---------- Trek Card -----------*/
+
+.card .card-content p {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-category-tag {
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    color: #43a047;
+    white-space: nowrap;
+    border-radius: 8px;
+    border: solid 1px #428A13;
+    padding: 5px 15px;
+}
+}
