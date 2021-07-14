@@ -1,19 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-{% for trek in treks %}
-{{ trek.category_name }}<br>
-{{ trek.trek_name }}<br>
-{{ trek.area_name }}<br>
-{{ trek.brief_description }}<br>
-{{ trek.trek_description }}<br>
-{{ trek.trek_distance }}<br>
-{{ trek.trek_elavation }}<br>
-{{ trek.trek_route_type }}<br>
-{{ trek.created_by }}<br>
-{% endfor %}
-
 {% for trek in treks %}
 <div class="row">
     <div class="col s12 m6 l4">
