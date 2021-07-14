@@ -27,6 +27,11 @@ def get_treks():
     return render_template("treks.html", treks=treks)
 
 
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
 @app.route("/join", methods=["GET", "POST"])
 def join():
     if request.method == "POST":
