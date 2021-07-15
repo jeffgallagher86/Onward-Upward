@@ -136,6 +136,16 @@ def add_trek():
         "add_trek.html", counties=counties, categories=categories)
 
 
+@app.route("/edit_trek/<trek_id>", methods=["GET", "POST"])
+def edit_trek(trek_id):
+    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+
+    counties = mongo.db.counties.find().sort("county_name", 1)
+    categories = mongo.db.categories.find().sort("category_id", 1)
+    return render_template(
+        "edit_trek.html", trek=trek, counties=counties, categories=categories)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
