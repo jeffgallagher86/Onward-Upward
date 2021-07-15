@@ -111,8 +111,24 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_trek")
+@app.route("/add_trek", methods=["GET", "POST"])
 def add_trek():
+    if request.method == "POST":
+        trek = {
+            "trek_name": request.form.get("trek_name"),
+            "county_name": request.form.get("county_name"),
+            "category_name": request.form.get("category_name"),
+            "trek_distance": request.form.get("trek_distance"),
+            "trek_elevation": request.form.get("trek_elevation"),
+            "trek_route_type": request.form.get("trek_route_type"),
+            "trek_description": request.form.get("trek_description"),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.treks.insert_one(trek)
+        flash("Task Successfully Added")
+        return redirect(url_for("get_treks"))
+
     counties = mongo.db.counties.find().sort("county_name", 1)
     # Sort by _id to keep categories in order
     categories = mongo.db.categories.find().sort("category_id", 1)

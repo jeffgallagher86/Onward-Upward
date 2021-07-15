@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for trek in treks %}
 <div class="row">
+{% for trek in treks %}
     <div class="col s12 m6 l4">
         <div class="card z-depth-2">
             <div class="card-image">
@@ -14,17 +14,20 @@
                         data-position="right" data-tooltip="Add to Favourites"></i></a>
             </div>
             <div class="card-content">
-                <p class="card-sub-head">{{ trek.area_name }}</p>
+                <p class="card-sub-head">{{ trek.county_name }}</p>
                 <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
                 <span class="right">Rating<i class="far fa-star"></i>
                 <i class="far fa-star"></i>
                 <i class="far fa-star"></i>
                 <i class="far fa-star"></i>
                 <i class="far fa-star"></i></span>
-                <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation: <strong>{{ trek.trek_elavation }}</strong></p>
+                <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation: <strong>{{ trek.trek_elevation }}</strong></p>
+                <p><em>{{ trek.created_by }}</em></p>
             </div>
         </div>
     </div>
-</div>
 {% endfor %}
+</div>
+
+
 {% endblock %}
