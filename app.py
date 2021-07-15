@@ -113,7 +113,11 @@ def logout():
 
 @app.route("/add_trek")
 def add_trek():
-    return render_template("add_trek.html")
+    counties = mongo.db.counties.find().sort("county_name", 1)
+    # Sort by _id to keep categories in order
+    categories = mongo.db.categories.find().sort("category_id", 1)
+    return render_template(
+        "add_trek.html", counties=counties, categories=categories)
 
 
 if __name__ == "__main__":
