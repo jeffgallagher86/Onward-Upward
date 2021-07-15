@@ -4,7 +4,7 @@
 <h3 class="center-align light-green-text text-darken-2">All Treks</h3>
 
 <div class="row">
-{% for trek in treks %}
+    {% for trek in treks %}
     <div class="col s12 m6 l4">
         <div class="card z-depth-2">
             <div class="card-image">
@@ -19,23 +19,25 @@
                 <p class="card-sub-head">{{ trek.county_name }}</p>
                 <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
                 <span class="right">Rating<i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i></span>
-                <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation: <strong>{{ trek.trek_elevation }}</strong></p>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i></span>
+                <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation:
+                    <strong>{{ trek.trek_elevation }}</strong></p>
                 <p><em>Contributor: {{ trek.created_by }}</em></p>
                 {% if session.user|lower == trek.created_by|lower %}
                 <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
-                <a href="" class="btn-small red lighten-1">Delete</a>
+                <a href="{{ url_for('delete_trek', trek_id=trek._id) }}" class="btn-small red lighten-1">Delete</a>
+                <!-- allows admin to edit/delete all submissions -->
                 {% elif session.user|lower == "admin" %}
                 <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
-                <a href="" class="btn-small red lighten-1">Delete</a>
+                <a href="{{ url_for('delete_trek', trek_id=trek._id) }}" class="btn-small red lighten-1">Delete</a>
                 {% endif %}
             </div>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
 </div>
 
 

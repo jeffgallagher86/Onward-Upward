@@ -160,6 +160,13 @@ def edit_trek(trek_id):
         "edit_trek.html", trek=trek, counties=counties, categories=categories)
 
 
+@app.route("/delete_trek/<trek_id>")
+def delete_trek(trek_id):
+    mongo.db.treks.remove({"_id": ObjectId(trek_id)})
+    flash("Trek Successfully Deleted")
+    return redirect(url_for("get_treks"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
