@@ -58,3 +58,7 @@ main {
     border: solid 1px #428A13;
     padding: 5px 15px;
 }
+
+.btn-small {
+    margin: 0 5px;
+}

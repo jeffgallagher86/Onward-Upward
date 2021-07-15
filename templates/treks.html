@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3 class="center-align light-green-text text-darken-2">All Treks</h3>
+
 <div class="row">
 {% for trek in treks %}
     <div class="col s12 m6 l4">
@@ -22,7 +24,9 @@
                 <i class="far fa-star"></i>
                 <i class="far fa-star"></i></span>
                 <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation: <strong>{{ trek.trek_elevation }}</strong></p>
-                <p><em>{{ trek.created_by }}</em></p>
+                <p><em>Contributor: {{ trek.created_by }}</em></p>
+                <a href="" class="btn-small green lighten-1">Edit</a>
+                <a href="" class="btn-small red lighten-1">Delete</a>
             </div>
         </div>
     </div>
