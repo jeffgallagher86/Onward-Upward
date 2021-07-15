@@ -138,8 +138,22 @@ def add_trek():
 
 @app.route("/edit_trek/<trek_id>", methods=["GET", "POST"])
 def edit_trek(trek_id):
-    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+    if request.method == "POST":
+        submit = {
+            "trek_name": request.form.get("trek_name"),
+            "county_name": request.form.get("county_name"),
+            "category_name": request.form.get("category_name"),
+            "trek_distance": request.form.get("trek_distance"),
+            "trek_elevation": request.form.get("trek_elevation"),
+            "trek_route_type": request.form.get("trek_route_type"),
+            "trek_description": request.form.get("trek_description"),
+            "image_url": request.form.get("image_url"),
+            "created_by": session["user"]
+        }
+        mongo.db.treks.update({"_id": ObjectId(trek_id)}, submit)
+        flash("Trek Successfully Updated")
 
+    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
     counties = mongo.db.counties.find().sort("county_name", 1)
     categories = mongo.db.categories.find().sort("category_id", 1)
     return render_template(

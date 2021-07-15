@@ -25,8 +25,13 @@
                 <i class="far fa-star"></i></span>
                 <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation: <strong>{{ trek.trek_elevation }}</strong></p>
                 <p><em>Contributor: {{ trek.created_by }}</em></p>
+                {% if session.user|lower == trek.created_by|lower %}
                 <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
                 <a href="" class="btn-small red lighten-1">Delete</a>
+                {% elif session.user|lower == "admin" %}
+                <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
+                <a href="" class="btn-small red lighten-1">Delete</a>
+                {% endif %}
             </div>
         </div>
     </div>
