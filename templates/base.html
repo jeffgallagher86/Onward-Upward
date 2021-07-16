@@ -10,6 +10,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     type="text/css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
   {% block styles %}
   {% endblock %}
@@ -20,18 +23,24 @@
 
   <header>
     <!-- top navbar -->
-    <nav class="nav-extended green darken-1 text-shadow">
+    <nav class="nav-extended green darken-1">
       <div class="nav-wrapper">
         <a href="{{ url_for('home') }}" class="brand-logo">Onward & Upward</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-          <li><a href="{{ url_for('add_trek') }}">Add Trek</a></li>
-          <li><a href="{{ url_for('get_treks') }}">Treks</a></li>
-          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% if session.user %}
+              <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+              <li><a href="{{ url_for('add_trek') }}">Add Trek</a></li>
+              <li><a href="{{ url_for('get_treks') }}">Treks</a></li>
+            {% if session.user|lower == "admin"|lower %}
+              <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+            {% endif %}
+              <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
           <li><a href="{{ url_for('login') }}">Log In</a></li>
           <li><a href="{{ url_for('join') }}">Join</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
@@ -42,32 +51,38 @@
         <h4 class="center-align green-text text-darken-1">Onward & Upward</h4>
       </li>
       <li><a href="{{ url_for('home') }}">Home</a></li>
-      <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-      <li><a href="{{ url_for('add_trek') }}">Add Trek</a></li>
-      <li><a href="{{ url_for('get_treks') }}">Treks</a></li>
-      <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-      <li><a href="{{ url_for('login') }}">Log In</a></li>
-      <li><a href="{{ url_for('join') }}">Join</a></li>
+          {% if session.user %}
+              <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+              <li><a href="{{ url_for('add_trek') }}">Add Trek</a></li>
+              <li><a href="{{ url_for('get_treks') }}">Treks</a></li>
+            {% if session.user|lower == "admin"|lower %}
+              <li><a href="{{ url_for('get_categories') }}">Manage Categories</a></li>
+            {% endif %}
+              <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% else %}
+          <li><a href="{{ url_for('login') }}">Log In</a></li>
+          <li><a href="{{ url_for('join') }}">Join</a></li>
+          {% endif %}
     </ul>
   </header>
 
   <section>
     <!-- flash messages -->
     {% with messages = get_flashed_messages() %}
-      {% if messages%}
-        {% for message in messages %}
-          <div class="row flashes">
-            <h4 class="light-green center-align">{{ message }}</h4>
-          </div>
-        {% endfor %}
-      {% endif %}
+    {% if messages%}
+    {% for message in messages %}
+    <div class="row flashes">
+      <h4 class="light-green center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
   </section>
 
   <main class="container">
     {% block content %}
     {% endblock %}
-  </main>  
+  </main>
 
   <footer class="page-footer green darken-1">
     <div class="container">
@@ -79,10 +94,14 @@
         <div class="col l4 offset-l2 s12 footer-links">
           <h5 class="white-text">Social Links</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a class="grey-text text-lighten-3" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a></li>
-            <li><a class="grey-text text-lighten-3" href="https://github.com/jeffgallagher86/Onward-and-Upward" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/" target="_blank"><i
+                  class="fab fa-facebook-f"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.instagram.com/" target="_blank"><i
+                  class="fab fa-instagram"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.youtube.com/" target="_blank"><i
+                  class="fab fa-youtube"></i></a></li>
+            <li><a class="grey-text text-lighten-3" href="https://github.com/jeffgallagher86/Onward-and-Upward"
+                target="_blank"><i class="fab fa-github"></i></a></li>
           </ul>
         </div>
       </div>
