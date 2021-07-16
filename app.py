@@ -27,6 +27,14 @@ def get_treks():
     return render_template("treks.html", treks=treks)
 
 
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    treks = list(mongo.db.treks.find({"$text": {"$search": query}}))
+    return render_template("treks.html", treks=treks)
+
+
 @app.route("/home")
 def home():
     return render_template("home.html")
