@@ -1,36 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-
 <div class="row view-trek">
-    <div class="col s12">
-        <img src="{{ trek.image_url }}" class="responsive-img" alt="trek_image ">
-        <h3>{{ trek.trek_name }}</h3>
+    <div class="col s12 trek-img">
+        <img src="{{ trek.image_url }}" alt="Picture of {{ trek.trek_name }}">
+        <div class="col s12"><h2 class="text-shadow">{{ trek.trek_name }}</h2></div>
+        <div class="col s12"><h4 class="text-shadow">{{ trek.county_name }}</h4></div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col s4">{{ trek.county_name }}</div>
-    <div class="col s4"><p>Hello</p></div>
-    <div class="col s4"><p>Yup</p></div>
+    <div class="col s4"><h5>Length:</h5></div> 
+    <div class="col s4"><h5>Elevation Gain:</h5></div>
+    <div class="col s4"><h5>Route Type:</h5></div>
 </div>
 
 <div class="row">
-    <div class="col s6"></div>
-    <div class="col s6"></div>
+    <div class="col s4">{{ trek.trek_distance }}</div>
+    <div class="col s4">{{ trek.trek_elevation }}</div>
+    <div class="col s4">{{ trek.trek_route_type }}</div>
 </div>
 
-<!-- <div class="row">
-    <div class="col s12">
-      <div class="card">
-          <div class="card-image">
-            <img src="{{ trek.image_url }}" alt="trek_image ">
-        </div>
-        <span class="white-text">I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-        </span>
-      </div>
-    </div>
-  </div>
+<div class="row">
+    <div class="col s4"><h5>Trek Description</h5></div>
+    <div class="col s6">{{ trek.trek_description }}</div>
+</div>
 
 {% endblock %}
