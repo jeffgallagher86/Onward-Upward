@@ -168,6 +168,13 @@ def edit_trek(trek_id):
         "edit_trek.html", trek=trek, counties=counties, categories=categories)
 
 
+# view individual trek page
+@app.route("/view_trek/<trek_id>")
+def view_trek(trek_id):
+    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+    return render_template("view_trek.html", trek=trek)
+
+
 @app.route("/delete_trek/<trek_id>")
 def delete_trek(trek_id):
     mongo.db.treks.remove({"_id": ObjectId(trek_id)})

@@ -31,6 +31,9 @@ main {
     font-family: 'Josefin Sans', sans-serif;
 }
 
+/* -------  Hero Image  ----------- */
+
+
 /* --------  Join Page -----------*/
 
 .flashes h4 {
@@ -39,13 +42,14 @@ main {
 
 .material-tooltip {
     background-color: #3eff48;
-  }
+}
 
 /* ---------- Trek Card -----------*/
 
 .card .card-content p {
     font-weight: bold;
     margin: 10px 0;
+    color: #000;
 }
 
 .card-category-tag {
@@ -61,4 +65,11 @@ main {
 
 .btn-small {
     margin: 0 5px;
+}
+
+/* ----  view  trek --------- */
+
+.view-trek img {
+    margin: 0 auto;
+    display: block;
 }
