@@ -50,7 +50,7 @@
         </div>
         <!-- trek distance -->
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12 m4">
                 <i class="fas fa-ruler prefix light-green-text text-darken-2"></i>
                 <input id="trek_distance" name="trek_distance" type="text" minlength="2" maxlength="7"
                     pattern="(\d+).?(\d*)\s*(km)" class="validate" value="{{ trek.trek_distance }}" required>
@@ -59,7 +59,7 @@
                     km</span>
             </div>
             <!-- trek elevation -->
-            <div class="input-field col s6">
+            <div class="input-field col s12 m4">
                 <i class="fas fa-mountain prefix light-green-text text-darken-2"></i>
                 <input id="trek_elevation" name="trek_elevation" type="text" minlength="2" maxlength="7"
                     pattern="(\d+).?(\d*)\s*(m)" class="validate" value="{{ trek.trek_elevation }}" required>
@@ -67,10 +67,8 @@
                 <span class="helper-text" data-error="Please Enter an Elevation e.g 526m" data-success="right">In
                     Metres</span>
             </div>
-        </div>
         <!-- trek route type -->
-        <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s12 m4">
                 <i class="fas fa-pencil-alt prefix light-green-text text-darken-2"></i>
                 <input id="trek_route_type" name="trek_route_type" type="text" minlength="2" maxlength="15"
                     class="validate" value="{{ trek.trek_route_type}}" required>
