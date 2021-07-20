@@ -42,6 +42,13 @@ def home():
     return render_template("home.html", treks=treks, categories=categories)
 
 
+# @app.route("/favourite_trek/<trek_id>", methods=["GET", "POST"])
+# def favourite_trek(trek_id):
+#     treks = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+#     user = mongo.db.users.find_one(
+#         {"username": session["user"]})["username"]
+
+
 @app.route("/join", methods=["GET", "POST"])
 def join():
     if request.method == "POST":
@@ -136,7 +143,7 @@ def add_trek():
             "created_by": session["user"]
         }
         mongo.db.treks.insert_one(trek)
-        flash("Task Successfully Added")
+        flash("Trek Successfully Added")
         return redirect(url_for("get_treks"))
 
     counties = mongo.db.counties.find().sort("county_name", 1)

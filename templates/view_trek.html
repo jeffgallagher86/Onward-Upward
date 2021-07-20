@@ -4,26 +4,32 @@
 <div class="row view-trek">
     <div class="col s12 trek-img">
         <img src="{{ trek.image_url }}" alt="Picture of {{ trek.trek_name }}">
-        <div class="col s12"><h2 class="text-shadow">{{ trek.trek_name }}</h2></div>
-        <div class="col s12"><h4 class="text-shadow">{{ trek.county_name }}</h4></div>
+        <h2 class="text-shadow">{{ trek.trek_name }}</h2>
+        <h4 class="text-shadow">{{ trek.county_name }}</h4>
     </div>
 </div>
 
-<div class="row">
-    <div class="col s4"><h5>Length:</h5></div> 
-    <div class="col s4"><h5>Elevation Gain:</h5></div>
-    <div class="col s4"><h5>Route Type:</h5></div>
+<div class="row view-trek-headings">
+
+    <div class="col s12 m4">
+        <h5>Length:</h5>
+        <p>{{ trek.trek_distance }}</p>
+
+        <h5>Elevation Gain:</h5>
+        <p>{{ trek.trek_elevation }}</p>
+
+        <h5>Route Type:</h5>
+        <p>{{ trek.trek_route_type }}</p>
+    </div>
+    <div class="col s12 m6 right">
+        <div>
+            <h5>Trek Description</h5>
+        </div>
+        <p>{{ trek.trek_description }}</p>
+    </div>
+
 </div>
 
-<div class="row">
-    <div class="col s4">{{ trek.trek_distance }}</div>
-    <div class="col s4">{{ trek.trek_elevation }}</div>
-    <div class="col s4">{{ trek.trek_route_type }}</div>
-</div>
 
-<div class="row">
-    <div class="col s4"><h5>Trek Description</h5></div>
-    <div class="col s6">{{ trek.trek_description }}</div>
-</div>
 
 {% endblock %}

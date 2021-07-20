@@ -1,50 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="slider ">
+<div class="slider">
   <ul class="slides">
     <li>
-      <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-      <div class="caption center-align">
+      <img src="/static/images/wicklow-mountains-trek.jpg"> <!-- random image -->
+      <div class="caption center-align text-shadow">
         <h3>Welcome to Onward & Upward</h3>
         <h5 class="light grey-text text-lighten-3">Let's Explore</h5>
       </div>
     </li>
     <li>
-      <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-      <div class="caption left-align">
-        <h3>Left Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      <img src="/static/images/benbulben.jpg"> <!-- random image -->
+      <div class="caption left-align text-shadow">
+        <h3>Discover the Best Treks in Ireland</h3>
+        <h5 class="light grey-text text-lighten-3">Stunning scenery, spectacular views, all on your doorstep.</h5>
       </div>
     </li>
     <li>
-      <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-      <div class="caption right-align">
-        <h3>Right Aligned Caption</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      <img src="/static/images/cuilcagh-boardwalk-steven-hylands-flickr.jpg"> <!-- random image -->
+      <div class="caption right-align text-shadow">
+        <h3>Add Your Own Treks</h3>
+        <h5 class="light grey-text text-lighten-3">Share your favourite treks with our community.</h5>
       </div>
     </li>
     <li>
-      <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-      <div class="caption center-align">
-        <h3>This is our big Tagline!</h3>
-        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      <img src="/static/images/croagh-patrick-stehpen-coyle-flickr.jpg"> <!-- random image -->
+      <div class="caption center-align text-shadow">
+        <h3>Join Today</h3>
+        <h5 class="light grey-text text-lighten-3">Join our ever gorwing community of trekkers.</h5>
       </div>
     </li>
   </ul>
 </div>
 
-<div class="row">
+<div class="row greeting-blurb">
   <div class="col s12 m6 offset-m3 center-align">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, ex saepe libero sequi suscipit aliquam
-    voluptatibus culpa fugit vitae dignissimos tempora neque dolor vel odio minima laborum, voluptas magnam autem.
+    <h2>Welcome!</h2>
+    Welcome to Onward & Upward. We are dedicated to bringing you the absolute best treks and hikes in Ireland.
+    From the most popualr treks in Ireland to some of best hidden gems, we have it all. We are a constantly growing
+    communitywith new contentbeing updated regularly
+    by the the O&A team and our wonderful community. Please join up today and share your favourite treks with us. Let's
+    explore together!
   </div>
 </div>
 
-<div class="row">
-  {% if treks|length < 6 %}
+<div class="row featured-treks">
   {% for trek in treks %}
-  <div class="col s12 m4">
+  <div class="col s12 m6 l4">
     <div class="card z-depth-2">
       <div class="card-image">
         <img src="{{ trek.image_url }}">
@@ -65,16 +68,15 @@
           <i class="far fa-star"></i>
           <i class="far fa-star"></i>
           <i class="far fa-star"></i></span>
-        <p>Length: <strong>{{ trek.trek_distance }}</strong> Elevation:
-          <strong>{{ trek.trek_elevation }}</strong></p>
+        <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
+          <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
       </div>
     </div>
   </div>
   {% endfor %}
-  {% endif %}
 </div>
 
-<div class="row">
+<div class="row home-categories">
   {% for category in categories %}
   <div class="col s12 m4">
     <div class="card-panel">
@@ -86,7 +88,7 @@
 </div>
 
 
-<div class="row card-panel">
+<div class="row card-panel home-search-bar">
   <form action="{{ url_for('search') }}" method="post" class="col s12">
     <div class="row valign-wrapper center-align">
       <div class="input-field col s12">
@@ -104,40 +106,45 @@
   </form>
 </div>
 
-<div class="row center-align">
-  <div class="col s12 m4 offset-m4">
-    <h3><strong>Sign Up Today!</strong></h3>
+<div class="row features-section">
+  <div class="row center-align">
+    <div class="col s12 m4 offset-m4">
+      <h3><strong>Sign Up Today!</strong></h3>
+    </div>
   </div>
-</div>
 
-<div class="row center-align">
-  <div class="col s12 m4">
-    <h4>Add Your Trek</h4>
-    <i class="far fa-plus-square home-icons"></i>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
-      perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur aperiam!
-      Quod, doloribus.</p>
+  <div class="row center-align">
+    <div class="col s12 m4">
+      <h4>Add Your Trek</h4>
+      <i class="far fa-plus-square home-icons"></i>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
+        perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur
+        aperiam!
+        Quod, doloribus.</p>
+    </div>
+    <div class="col s12 m4">
+      <h4>Discover New Journeys</h4>
+      <i class="fas fa-hiking home-icons"></i>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
+        perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur
+        aperiam!
+        Quod, doloribus.</p>
+    </div>
+    <div class="col s12 m4">
+      <h4>Favourite Treks</h4>
+      <i class="far fa-heart home-icons"></i>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
+        perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur
+        aperiam!
+        Quod, doloribus.</p>
+    </div>
   </div>
-  <div class="col s12 m4">
-    <h4>Discover New Journeys</h4>
-    <i class="fas fa-hiking home-icons"></i>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
-      perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur aperiam!
-      Quod, doloribus.</p>
-  </div>
-  <div class="col s12 m4">
-    <h4>Favourite Treks</h4>
-    <i class="far fa-heart home-icons"></i>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias aspernatur esse qui fuga vel, magni expedita
-      perspiciatis officiis consequuntur laudantium nam possimus, facere fugit excepturi veritatis consectetur aperiam!
-      Quod, doloribus.</p>
-  </div>
-</div>
 
-<div class="row center-align">
-  <div class="col s12 m2 offset-m5">
-  <a href="{{ url_for('join') }}" class="waves-effect waves-light btn home-reg-button green darken-1">Join Now</a>
-</div>
+  <div class="row center-align">
+    <div class="col s12 m2 offset-m5">
+      <a href="{{ url_for('join') }}" class="waves-effect waves-light btn home-reg-button green darken-1">Join Now</a>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

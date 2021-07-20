@@ -38,9 +38,30 @@ main {
     color: #43a047;
 }
 
-.home-reg-button {
+.greeting-blurb {
+    margin: 25px 0;
+    font-size: larger;
 }
 
+.greeting-blurb h2 {
+    color: #43a047;
+}
+
+.featured-treks {
+    margin: 50px 0;
+}
+
+.features-section {
+    margin: 50px 0;
+}
+
+.features-section h3 {
+    color: #43a047;
+}
+
+.features-section h4 {
+    color: #455a64;
+}
 
 /* --------  Join Page -----------*/
 
@@ -75,6 +96,10 @@ main {
     margin: 0 5px;
 }
 
+.elevation-text {
+    margin-left: 20px;
+}
+
 /* ----  view  trek --------- */
 .trek-img {
     position: relative;
@@ -103,3 +128,35 @@ main {
     left: 72px;
     color: white;
 }
+
+.view-trek-headings h5 {
+    color: #43a047;
+}
+
+/* ------ Footer Links --------- */
+
+.footer-links {
+    display: inline;
+}
+
+/* ---------- Media Queries ----------- */
+
+@media screen and (max-width: 480px) {
+    .view-trek h2 {
+        font-size: 30px;
+        left: 20px;
+    }
+
+    .view-trek h4 {
+        font-size: 25px;
+        left: 20px;
+    }
+
+    nav .brand-logo {
+        font-size: 20px
+    }
+
+    .view-trek-headings {
+        display: inline-block;
+    }
+  }
