@@ -31,7 +31,15 @@ main {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-/* -------  Hero Image  ----------- */
+/* -------  Home Page  ----------- */
+
+.home-icons {
+    font-size: xx-large;
+    color: #43a047;
+}
+
+.home-reg-button {
+}
 
 
 /* --------  Join Page -----------*/
@@ -70,6 +78,7 @@ main {
 /* ----  view  trek --------- */
 .trek-img {
     position: relative;
+    background-position: center;
 }
 
 .trek-img img {

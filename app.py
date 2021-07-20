@@ -38,7 +38,8 @@ def search():
 @app.route("/home")
 def home():
     treks = list(mongo.db.treks.find())
-    return render_template("home.html", treks=treks)
+    categories = list(mongo.db.categories.find().sort("category_id", 1))
+    return render_template("home.html", treks=treks, categories=categories)
 
 
 @app.route("/join", methods=["GET", "POST"])
