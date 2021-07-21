@@ -17,6 +17,10 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+p {
+    color: #455a64;
+}
+
 main {
     flex: 1 0 auto;
 }
@@ -29,6 +33,7 @@ main {
 
 .brand-logo {
     font-family: 'Josefin Sans', sans-serif;
+    left: 20px;
 }
 
 /* -------  Home Page  ----------- */
@@ -78,7 +83,7 @@ main {
 .card .card-content p {
     font-weight: bold;
     margin: 10px 0;
-    color: #000;
+    color: #455a64;
 }
 
 .card-category-tag {
@@ -135,8 +140,15 @@ main {
 
 /* ------ Footer Links --------- */
 
-.footer-links {
+.footer-links li {
     display: inline;
+    padding-right: 20px;
+    /* float: right; */
+}
+
+.page-footer .footer-copyright {
+    left: 20px;
+
 }
 
 /* ---------- Media Queries ----------- */
@@ -153,10 +165,11 @@ main {
     }
 
     nav .brand-logo {
-        font-size: 20px
+        font-size: 20px;
+        font-weight: 500;
     }
 
     .view-trek-headings {
         display: inline-block;
     }
-  }
+}

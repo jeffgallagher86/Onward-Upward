@@ -4,16 +4,102 @@
 <h3 class="center-align light-green-text text-darken-2">Categories</h3>
 
 <div class="row">
-    {% for category in categories %}
-    <div class="row">
-        <div class="col s12">
-          <div class="card-panel">
-            <h4 class="center-align light-green-text text-darken-2">{{ category.category_name }}
-            </h4>
+  {% for category in categories %}
+  <div class="row">
+    <div class="col s12">
+      <div class="card-panel">
+          <h4 class="center-align light-green-text text-darken-2">{{ category.category_name }}
+          </h4>
+          <div class="row">
+            <!-- {% for easy in category_easy %}
+            <div class="col s12 m6 l4">
+              <div class="card z-depth-2">
+                <div class="card-image">
+                  <img src="{{ easy.image_url }}">
+                  <span class="card-title text-shadow">{{ easy.trek_name }}</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+                  <a href="{{ url_for('view_trek', trek_id=easy._id) }}"
+                    class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
+                      data-position="right" data-tooltip="Add to Favourites"></i></a>
+                </div>
+                <div class="card-content">
+                  <a href="#">
+                    <p class="card-sub-head">{{ easy.county_name }}</p>
+                  </a>
+                  <a href="#" class="card-category-tag">{{ easy.category_name }}</a>
+                  <span class="right">Rating<i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i></span>
+                  <p><span>Length: <strong>{{ easy.trek_distance }}</strong></span>
+                    <span class="elevation-text">Elevation: <strong>{{ easy.trek_elevation }}</strong></span></p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            {% for moderate in category_moderate %}
+            <div class="col s12 m6 l4">
+              <div class="card z-depth-2">
+                <div class="card-image">
+                  <img src="{{ moderate.image_url }}">
+                  <span class="card-title text-shadow">{{ moderate.trek_name }}</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+                  <a href="{{ url_for('view_trek', trek_id=moderate._id) }}"
+                    class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
+                      data-position="right" data-tooltip="Add to Favourites"></i></a>
+                </div>
+                <div class="card-content">
+                  <a href="#">
+                    <p class="card-sub-head">{{ moderate.county_name }}</p>
+                  </a>
+                  <a href="#" class="card-category-tag">{{ moderate.category_name }}</a>
+                  <span class="right">Rating<i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i></span>
+                  <p><span>Length: <strong>{{ moderate.trek_distance }}</strong></span>
+                    <span class="elevation-text">Elevation: <strong>{{ moderate.trek_elevation }}</strong></span></p>
+                </div>
+              </div>
+            </div>
+            {% endfor %} -->
+            {% for hard in category_hard %}
+            <div class="col s12 m6 l4">
+              <div class="card z-depth-2">
+                <div class="card-image">
+                  <img src="{{ hard.image_url }}">
+                  <span class="card-title text-shadow">{{ hard.trek_name }}</span>
+                  <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+                  <a href="{{ url_for('view_trek', trek_id=hard._id) }}"
+                    class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
+                      data-position="right" data-tooltip="Add to Favourites"></i></a>
+                </div>
+                <div class="card-content">
+                  <a href="#">
+                    <p class="card-sub-head">{{ hard.county_name }}</p>
+                  </a>
+                  <a href="#" class="card-category-tag">{{ hard.category_name }}</a>
+                  <span class="right">Rating<i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i></span>
+                  <p><span>Length: <strong>{{ hard.trek_distance }}</strong></span>
+                    <span class="elevation-text">Elevation: <strong>{{ hard.trek_elevation }}</strong></span></p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
           </div>
-        </div>
       </div>
-    {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

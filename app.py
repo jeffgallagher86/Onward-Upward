@@ -27,7 +27,6 @@ def get_treks():
     return render_template("treks.html", treks=treks)
 
 
-
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -39,7 +38,8 @@ def search():
 def home():
     treks = list(mongo.db.treks.find())
     categories = list(mongo.db.categories.find().sort("category_id", 1))
-    return render_template("home.html", treks=treks, categories=categories)
+    return render_template(
+        "home.html", treks=treks, categories=categories)
 
 
 # @app.route("/favourite_trek/<trek_id>", methods=["GET", "POST"])
@@ -193,8 +193,15 @@ def delete_trek(trek_id):
 
 @app.route("/get_categories")
 def get_categories():
+    category_easy = list(mongo.db.treks.find(
+        {"category_name": "Easy"}).sort("category_name", 1))
+    category_moderate = list(mongo.db.treks.find(
+        {"category_name": "Moderate"}).sort("category_name", 1))
+    category_hard = list(mongo.db.treks.find(
+        {"category_name": "Hard"}).sort("category_name", 1))
     categories = list(mongo.db.categories.find().sort("category_id", 1))
-    return render_template("categories.html", categories=categories)
+    return render_template(
+        "categories.html", categories=categories, category_easy=category_easy, category_moderate=category_moderate, category_hard=category_hard)
 
 
 if __name__ == "__main__":
