@@ -1,5 +1,6 @@
 # Code adapted from Code Institutes Task Manager Walkthrough
 
+
 import os
 from flask import (
     Flask, flash, render_template,
@@ -22,20 +23,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+ADMIN_USERNAME = "admin"
+
+
 @app.route("/")
-@app.route("/get_treks")
-def get_treks():
-    treks = list(mongo.db.treks.find())
-    return render_template("treks.html", treks=treks)
-
-
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    query = request.form.get("query")
-    treks = list(mongo.db.treks.find({"$text": {"$search": query}}))
-    return render_template("treks.html", treks=treks)
-
-
 @app.route("/home")
 def home():
     treks = list(mongo.db.treks.find())
@@ -44,28 +35,61 @@ def home():
         "home.html", treks=treks, categories=categories)
 
 
-# @app.route("/favourite_trek/<trek_id>", methods=["GET", "POST"])
-# def favourite_trek(trek_id):
-#     treks = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
-#     user = mongo.db.users.find_one(
-#         {"username": session["user"]})["username"]
+@app.route("/treks")
+def get_treks():
+    category = request.args.get('category')
+    treks = []
+    if category:
+        treks = list(mongo.db.treks.find({"category_name": category}))
+    else:
+        treks = list(mongo.db.treks.find())
+    return render_template("treks.html", treks=treks, category=category)
+
+
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    treks = list(mongo.db.treks.find({"$text": {"$search": query}}))
+    return render_template("treks.html", treks=treks, query=query)
+
+
+@app.route("/trek/<trek_id>/favourite")
+def favourite_trek(trek_id):
+    try:
+        trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+        if trek:
+            user = mongo.db.users.find_one(
+                {"username": session["user"]})
+            print(user)
+            if user.get("favs"):
+                updated_user = {**user, 'favs': user.favs.append(trek)}
+            else:
+                updated_user = {**user, 'favs': [trek]}
+            mongo.db.users.update({"username": session["user"]}, updated_user)
+
+        flash("Favourite added")
+        return redirect(url_for("home"))
+    except Exception as e:
+        print(e)
+        print("error")
+        return redirect(url_for("home"))
 
 
 @app.route("/join", methods=["GET", "POST"])
 def join():
+    if session.get('user'):
+        return redirect(url_for("home"))
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         existing_email = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
-
         if existing_user:
             flash("This Username is Taken")
             return redirect(url_for("join"))
         elif existing_email:
             flash("This Email is Taken")
             return redirect(url_for("join"))
-
         join = {
             "fname": request.form.get("fname").lower(),
             "lname": request.form.get("lname").lower(),
@@ -74,52 +98,49 @@ def join():
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(join)
-
         # put new user into session cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
-
+        return redirect(url_for("profile"))
     return render_template("join.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if session.get('user'):
+        return redirect(url_for("home"))
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
         if existing_user:
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
-                        request.form.get("username")))
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for("profile"))
             else:
                 # invalid password message
                 flash("Incorrect Username and/or Password")
                 return redirect(url_for("login"))
-
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
-
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile", methods=["GET"])
+def profile():
+    if not session.get("user"):
+        return redirect(url_for("login"))
     # Get the session users username from the database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-
+    username = session["user"]
+    fname = mongo.db.users.find_one(
+        {"username": username})["fname"]
     # Show users added treks on profile
-    if session["user"] == username:
-        treks = list(mongo.db.treks.find({"created_by": username}))
-        return render_template("profile.html", username=username, treks=treks)
+    treks = list(mongo.db.treks.find({"created_by": username}))
+    return render_template("profile.html", fname=fname, treks=treks)
 
 
 @app.route("/logout")
@@ -130,7 +151,7 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_trek", methods=["GET", "POST"])
+@app.route("/trek/add", methods=["GET", "POST"])
 def add_trek():
     if request.method == "POST":
         trek = {
@@ -144,10 +165,10 @@ def add_trek():
             "image_url": request.form.get("image_url"),
             "created_by": session["user"]
         }
+
         mongo.db.treks.insert_one(trek)
         flash("Trek Successfully Added")
         return redirect(url_for("get_treks"))
-
     counties = mongo.db.counties.find().sort("county_name", 1)
     # Sort by _id to keep categories in order
     categories = mongo.db.categories.find().sort("category_id", 1)
@@ -155,7 +176,7 @@ def add_trek():
         "add_trek.html", counties=counties, categories=categories)
 
 
-@app.route("/edit_trek/<trek_id>", methods=["GET", "POST"])
+@app.route("/trek/<trek_id>/edit", methods=["GET", "POST"])
 def edit_trek(trek_id):
     if request.method == "POST":
         submit = {
@@ -171,36 +192,45 @@ def edit_trek(trek_id):
         }
         mongo.db.treks.update({"_id": ObjectId(trek_id)}, submit)
         flash("Trek Successfully Updated")
-
-    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
-    counties = mongo.db.counties.find().sort("county_name", 1)
-    categories = mongo.db.categories.find().sort("category_id", 1)
-    return render_template(
-        "edit_trek.html", trek=trek, counties=counties, categories=categories)
+    try:
+        trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+        counties = mongo.db.counties.find().sort("county_name", 1)
+        categories = mongo.db.categories.find().sort("category_id", 1)
+        return render_template(
+            "edit_trek.html",
+            trek=trek, counties=counties, categories=categories)
+    except:
+        return redirect(url_for("get_treks"))
 
 
 # view individual trek page
-@app.route("/view_trek/<trek_id>")
+@app.route("/trek/<trek_id>/view")
 def view_trek(trek_id):
-    trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
-    return render_template("view_trek.html", trek=trek)
+    try:
+        trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
+        return render_template("view_trek.html", trek=trek)
+    except:
+        return redirect(url_for("get_treks"))
 
 
-# @app.route("/view_category/<category_name>")
-# def view_category(category_name):
-#     treks = mongo.db.treks.find({"category_name": "Easy"})
-#     return render_template("view_category.html", treks=treks)
+def is_user_admin():
+    if session["user"] and session["user"] == ADMIN_USERNAME:
+        return True
+    return False
 
 
-@app.route("/delete_trek/<trek_id>")
+@app.route("/trek/<trek_id>/delete")
 def delete_trek(trek_id):
     mongo.db.treks.remove({"_id": ObjectId(trek_id)})
     flash("Trek Successfully Deleted")
     return redirect(url_for("get_treks"))
 
 
-@app.route("/get_categories")
+@app.route("/categories")
 def get_categories():
+    is_admin = is_user_admin()
+    if not is_admin:
+        return redirect(url_for("home"))
     categories = list(mongo.db.categories.find().sort("category_id", 1))
     treks = list(mongo.db.treks.find())
     return render_template(

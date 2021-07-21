@@ -12,22 +12,15 @@
       <div class="card-image">
         <img src="{{ trek.image_url }}">
         <span class="card-title text-shadow">{{ trek.trek_name }}</span>
-        <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
-                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+        <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                  tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
         <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
           class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
             data-position="right" data-tooltip="Add to Favourites"></i></a>
       </div>
       <div class="card-content">
-        <a href="#">
-          <p class="card-sub-head">{{ trek.county_name }}</p>
-        </a>
-        <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
-        <span class="right">Rating<i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i>
-          <i class="far fa-star"></i></span>
+        <span class="card-sub-head">{{ trek.county_name }}</span>
+        <a href="{{ url_for('get_treks') }}" class="card-category-tag right"><span>{{ trek.category_name }}</a>
         <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
           <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
       </div>
@@ -46,22 +39,15 @@
     <div class="card-image">
       <img src="{{ trek.image_url }}">
       <span class="card-title text-shadow">{{ trek.trek_name }}</span>
-      <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
-                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+      <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
       <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
         class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
           data-position="right" data-tooltip="Add to Favourites"></i></a>
     </div>
     <div class="card-content">
-      <a href="#">
-        <p class="card-sub-head">{{ trek.county_name }}</p>
-      </a>
-      <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
-      <span class="right">Rating<i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i></span>
+      <span class="card-sub-head">{{ trek.county_name }}</span>
+      <a href="{{ url_for('get_treks') }}" class="card-category-tag right"><span>{{ trek.category_name }}</a>
       <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
         <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
     </div>
@@ -80,22 +66,15 @@
     <div class="card-image">
       <img src="{{ trek.image_url }}">
       <span class="card-title text-shadow">{{ trek.trek_name }}</span>
-      <a class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
-                            tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+      <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
       <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
         class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
           data-position="right" data-tooltip="Add to Favourites"></i></a>
     </div>
     <div class="card-content">
-      <a href="#">
-        <p class="card-sub-head">{{ trek.county_name }}</p>
-      </a>
-      <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
-      <span class="right">Rating<i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i>
-        <i class="far fa-star"></i></span>
+      <span class="card-sub-head">{{ trek.county_name }}</span>
+      <a href="{{ url_for('get_treks') }}" class="card-category-tag right"><span>{{ trek.category_name }}</a>
       <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
         <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
     </div>
