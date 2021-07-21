@@ -6,6 +6,7 @@ h3,
 h4,
 h5 {
     font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
 }
 
 body {
@@ -34,7 +35,12 @@ main {
 
 .brand-logo {
     font-family: 'Josefin Sans', sans-serif;
-    left: 20px;
+    font-weight: 600;
+    width: 300px;
+}
+
+.sidenav li>a {
+    font-size: 16px;
 }
 
 /* ----------- text------------ */
@@ -94,12 +100,22 @@ main {
     background-color: #43a047;
 }
 
+/* -------- Profile Page ------------*/
+
+.profile-panel h3 {
+    color: #455a64;
+}
+
 /* ---------- Trek Card -----------*/
 
 .card .card-content p {
     font-weight: bold;
     margin: 10px 0;
     color: #455a64;
+}
+
+.card-title {
+    font-weight: 600;
 }
 
 .card-category-tag {
@@ -154,6 +170,13 @@ main {
     color: #43a047;
 }
 
+/* ---------- Categories ------------- */
+
+.categories-cards h3 {
+    color: #43a047;
+    font-weight: 600;
+}
+
 /* ------ Footer Links --------- */
 
 .footer-links li {
@@ -181,8 +204,8 @@ main {
     }
 
     nav .brand-logo {
-        font-size: 20px;
-        font-weight: 500;
+        font-size: 25px;
+        font-weight: 600;
     }
 
     .view-trek-headings {

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align light-green-text text-darken-2">Categories</h3>
+<h3 class="center-align green-text text-darken-1">Categories</h3>
 
-<div class="row card-panel">
-  <h2 class="center-align">Easy</h2>
+<div class="row card-panel section categories-cards">
+  <h3 class="center-align">Easy</h3>
   {% for trek in treks %}
   {% if trek.category_name == "Easy" %}
   <div class="col s12 m6 l4">
@@ -37,8 +37,8 @@
   {% endfor %}
 </div>
 
-<div class="row card-panel">
-  <h2 class="center-align">Moderate</h2>
+<div class="row card-panel section categories-cards">
+  <h3 class="center-align">Moderate</h3>
 {% for trek in treks %}
 {% if trek.category_name == "Moderate" %}
 <div class="col s12 m6 l4">
@@ -71,8 +71,8 @@
 {% endfor %}
 </div>
 
-<div class="row card-panel">
-  <h2 class="center-align">Hard</h2>
+<div class="row card-panel section categories-cards">
+  <h3 class="center-align">Hard</h3>
 {% for trek in treks %}
 {% if trek.category_name == "Hard" %}
 <div class="col s12 m6 l4">

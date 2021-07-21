@@ -1,3 +1,5 @@
+# Code adapted from Code Institutes Task Manager Walkthrough
+
 import os
 from flask import (
     Flask, flash, render_template,
@@ -113,7 +115,9 @@ def profile(username):
     # Get the session users username from the database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    if session["user"] == username or "admin":
+
+    # Show users added treks on profile
+    if session["user"] == username:
         treks = list(mongo.db.treks.find({"created_by": username}))
         return render_template("profile.html", username=username, treks=treks)
 
@@ -180,6 +184,12 @@ def edit_trek(trek_id):
 def view_trek(trek_id):
     trek = mongo.db.treks.find_one({"_id": ObjectId(trek_id)})
     return render_template("view_trek.html", trek=trek)
+
+
+# @app.route("/view_category/<category_name>")
+# def view_category(category_name):
+#     treks = mongo.db.treks.find({"category_name": "Easy"})
+#     return render_template("view_category.html", treks=treks)
 
 
 @app.route("/delete_trek/<trek_id>")

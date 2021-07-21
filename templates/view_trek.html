@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="row view-trek-headings">
+<div class="row view-trek-headings section">
 
     <div class="col s12 m4">
         <h5>Length:</h5>
@@ -21,6 +21,7 @@
         <h5>Route Type:</h5>
         <p>{{ trek.trek_route_type }}</p>
     </div>
+
     <div class="col s12 m6 right">
         <div>
             <h5>Trek Description</h5>
@@ -28,6 +29,12 @@
         <p>{{ trek.trek_description }}</p>
     </div>
 
+</div>
+
+<div class="row section">
+    <div class="col s12 center-align">
+        <a href="{{ url_for('get_treks') }}" class="waves-effect waves-light green darken-1 btn-small">Back to Treks!</a>
+    </div>
 </div>
 
 
