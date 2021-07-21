@@ -113,11 +113,9 @@ def profile(username):
     # Get the session users username from the database
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
-    if session["user"]:
-        return render_template("profile.html", username=username)
-
-    return redirect(url_for("login"))
+    if session["user"] == username or "admin":
+        treks = list(mongo.db.treks.find({"created_by": username}))
+        return render_template("profile.html", username=username, treks=treks)
 
 
 @app.route("/logout")
@@ -193,15 +191,10 @@ def delete_trek(trek_id):
 
 @app.route("/get_categories")
 def get_categories():
-    category_easy = list(mongo.db.treks.find(
-        {"category_name": "Easy"}).sort("category_name", 1))
-    category_moderate = list(mongo.db.treks.find(
-        {"category_name": "Moderate"}).sort("category_name", 1))
-    category_hard = list(mongo.db.treks.find(
-        {"category_name": "Hard"}).sort("category_name", 1))
     categories = list(mongo.db.categories.find().sort("category_id", 1))
+    treks = list(mongo.db.treks.find())
     return render_template(
-        "categories.html", categories=categories, category_easy=category_easy, category_moderate=category_moderate, category_hard=category_hard)
+        "categories.html", categories=categories, treks=treks)
 
 
 if __name__ == "__main__":

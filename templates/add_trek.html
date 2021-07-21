@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align light-green-text text-darken-2">Add Trek</h3>
+<h3 class="center-align green-text text-darken-1">Add Trek</h3>
 
 <!-- trek name -->
 <div class="row card-panel">
     <form class="col s12" method="POST" action="{{ url_for('add_trek') }}">
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-hiking prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-hiking prefix green-text text-darken-1"></i>
                 <input id="trek_name" name="trek_name" type="text" minlength="2" maxlength="70" class="validate"
                     required>
                 <label for="trek_name">Trek Name</label>
@@ -17,9 +17,9 @@
         <!-- county dropdown -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-map prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-map prefix green-text text-darken-1"></i>
                 <select id="county_name" name="county_name" class="validate" required>
-                    <option value="" disabled selected>Choose County</option>
+                    <option value="" disabled selected class="cat-drop">Choose County</option>
                     {% for county in counties %}
                     <option value="{{ county.county_name }}">{{ county.county_name }}</option>
                     {% endfor %}
@@ -30,7 +30,7 @@
         <!-- trek category dropdown -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-folder-open prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-folder-open prefix green-text text-darken-1"></i>
                 <select id="category_name" name="category_name" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
                     {% for category in categories %}
@@ -43,35 +43,37 @@
         <!-- trek distance -->
         <div class="row">
             <div class="input-field col s12 m4">
-                <i class="fas fa-ruler prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-ruler prefix green-text text-darken-1"></i>
                 <input id="trek_distance" name="trek_distance" type="text" minlength="2" maxlength="7"
                     pattern="(\d+).?(\d*)\s*(km)" class="validate" required>
-                <label for="trek_distance">Trek Distance</label>
+                <label for="trek_distance">Trek Distance(km)</label>
                 <span class="helper-text" data-error="Please Enter a Distance e.g 1.3km" data-success="right">In
                     km</span>
             </div>
             <!-- trek elevation -->
             <div class="input-field col s12 m4">
-                <i class="fas fa-mountain prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-mountain prefix green-text text-darken-1"></i>
                 <input id="trek_elevation" name="trek_elevation" type="text" minlength="2" maxlength="7"
                     pattern="(\d+).?(\d*)\s*(m)" class="validate" required>
-                <label for="trek_elevation">Trek Elevation</label>
+                <label for="trek_elevation">Trek Elevation(m)</label>
                 <span class="helper-text" data-error="Please Enter an Elevation e.g 526m" data-success="right">In
                     Metres</span>
             </div>
             <!-- trek route type -->
-                <div class="input-field col s12 m4">
-                    <i class="fas fa-pencil-alt prefix light-green-text text-darken-2"></i>
-                    <input id="trek_route_type" name="trek_route_type" type="text" minlength="2" maxlength="15"
-                        class="validate" required>
-                    <label for="trek_route_type">Trek Route Type</label>
-                    <span class="helper-text" data-error="" data-success="right">Out and Back, Loop etc.</span>
-                </div>
+            <div class="input-field col s12 m4">
+                <i class="fas fa-pencil-alt prefix green-text text-darken-1"></i>
+                <select id="trek_route_type" name="trek_route_type" class="validate" required>
+                    <option value="" disabled selected>Choose Route Type</option>
+                    <option value="Out & Back">Out & Back</option>
+                    <option value="Loop">Loop</option>
+                </select>
+                <label for="trek_route_type">Route Type</label>
+            </div>
         </div>
         <!-- trek description -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-align-left prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-align-left prefix green-text text-darken-1"></i>
                 <textarea id="trek_description" name="trek_description" minlength="5" maxlength="1000"
                     class="materialize-textarea validate" required></textarea>
                 <label for="trek_description">Trek Description</label>
@@ -80,7 +82,7 @@
         <!-- image url -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-camera prefix light-green-text text-darken-2"></i>
+                <i class="fas fa-camera prefix green-text text-darken-1"></i>
                 <input id="image_url" name="image_url" type="text" minlength="5" maxlength="500" class="validate"
                     required>
                 <label for="image_url">Image URL</label>
@@ -88,7 +90,8 @@
         </div>
         <!-- submit button -->
         <div class="row">
-            <button type="submit" class="col s4 offset-s4 m2 offset-m5 btn-large waves-effect light-green darken-2 text-shadow">
+            <button type="submit"
+                class="col s4 offset-s4 m2 offset-m5 btn-large waves-effect green darken-1 text-shadow">
                 Submit <i class="fas fa-sign-in-alt"></i>
             </button>
         </div>

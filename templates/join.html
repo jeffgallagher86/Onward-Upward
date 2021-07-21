@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align light-green-text text-darken-2">JOIN</h3>
+<h3 class="center-align green-text text-darken-1">JOIN</h3>
 
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('join') }}">
@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-envelope prefix light-green-text text-darken-2"></i>
+                    <i class="fas fa-envelope prefix green-text text-darken-1"></i>
                     <input id="email" name="email" type="email" class="validate"
                         pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required>
                     <label for="email">Email</label>
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user prefix light-green-text text-darken-2"></i>
+                    <i class="fas fa-user prefix green-text text-darken-1"></i>
                     <input id="username" name="username" type="text" minlength="5" maxlength="15"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                     <label for="username">UserName</label>
@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-lock prefix light-green-text text-darken-2"></i>
+                    <i class="fas fa-user-lock prefix green-text text-darken-1"></i>
                     <input id="password" name="password" minlength="5" maxlength="15" type="password"
                         pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                     <label for="password">Password</label>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="row">
-                <button type="submit" class="col s2 offset-s5 btn-large waves-effect light-green darken-2 text-shadow">
+                <button type="submit" class="col s2 offset-s5 btn-large waves-effect green darken-1 text-shadow">
                     Join <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>

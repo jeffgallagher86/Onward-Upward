@@ -17,7 +17,8 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-p {
+p,
+span {
     color: #455a64;
 }
 
@@ -34,6 +35,21 @@ main {
 .brand-logo {
     font-family: 'Josefin Sans', sans-serif;
     left: 20px;
+}
+
+/* ----------- text------------ */
+
+.validate {
+    color: #455a64;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+    color: #43a047;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #455a64;
 }
 
 /* -------  Home Page  ----------- */
@@ -75,7 +91,7 @@ main {
 }
 
 .material-tooltip {
-    background-color: #3eff48;
+    background-color: #43a047;
 }
 
 /* ---------- Trek Card -----------*/
