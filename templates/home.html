@@ -4,14 +4,14 @@
 <div class="slider">
   <ul class="slides">
     <li>
-      <img src="/static/images/wicklow-mountains-trek.jpg"> 
+      <img src="static/images/wicklow-mountains.jpg"> 
       <div class="caption center-align text-shadow">
         <h3>Welcome to Onward & Upward</h3>
         <h5 class="light grey-text text-lighten-3">Let's Explore</h5>
       </div>
     </li>
     <li>
-      <img src="/static/images/benbulben.jpg"> 
+      <img src="static/images/Howth-head.jpg"> 
       <div class="caption left-align text-shadow">
         <h3>Discover the Best Treks in Ireland</h3>
         <h5 class="light grey-text text-lighten-3">Stunning scenery, spectacular views, all on your doorstep.</h5>
@@ -59,10 +59,8 @@
                     data-position="right" data-tooltip="Add to Favourites"></i></a>
         </div>
         <div class="card-content">
-            <a href="#">
-                <p class="card-sub-head">{{ trek.county_name }}</p>
-            </a>
-            <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
+          <p class="card-sub-head">{{ trek.county_name }}</p>
+          <a href="{{ url_for('view_trek', trek_id=trek._id) }}" class="card-category-tag">{{ trek.category_name }}</a>
             <span class="right">Rating<i class="far fa-star"></i>
                 <i class="far fa-star"></i>
                 <i class="far fa-star"></i>

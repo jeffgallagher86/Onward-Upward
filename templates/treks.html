@@ -37,10 +37,8 @@
                         data-position="right" data-tooltip="Add to Favourites"></i></a>
             </div>
             <div class="card-content">
-                <a href="#">
-                    <p class="card-sub-head">{{ trek.county_name }}</p>
-                </a>
-                <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
+                <p class="card-sub-head">{{ trek.county_name }}</p>
+                <a href="{{ url_for('view_trek', trek_id=trek._id) }}" class="card-category-tag">{{ trek.category_name }}</a>
                 <span class="right">Rating<i class="far fa-star"></i>
                     <i class="far fa-star"></i>
                     <i class="far fa-star"></i>
