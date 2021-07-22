@@ -1,6 +1,6 @@
 # Onward and Upward
 
-Onward and Upward is a site for trekking, hiking and sightseeing enthusiasts who want to discover new and exciting treks all over Ireland while also being able to add their own.
+Onward and Upward is a web app for trekking, hiking and sightseeing enthusiasts who want to discover new and exciting treks all over Ireland while also being able to add their own.
 
 [View Live Website Here](https://onward-and-upward.herokuapp.com/)
 
@@ -17,24 +17,25 @@ As a user:
 2. I want to understand the purpose of the site.
 3. I want to know how/why this site stands out from others in it's field.
 4. I want to be able to easily navigate through the site.
-5. I want to find recipe's that i haven't seen on competitor sites.
-6. I want to find out which social media platforms the company is active on so i can have a browse.
+5. I want to find treks that i have never seen before.
 
 ### Returning & Frequent User
 
-1. I want to see what new content has been added to the site i.e recipes, video tutorials, photos etc.
+1. I want to see what new content has been added to the site i.e new treks and hikes.
 2. I want to follow the company on social media
 3. I want to see which new features have been added to the site.
-4. I want to be absle to sign up for an email newsletter so i can recieve new recipes directly by email.
+4. I want to be able to sign up for an email newsletter so i can recieve new recipes directly by email.
 5. I want to be able to engage with the site owners to give feedback or request certain content.
+6. I want to be able to add and edit my own treks on the site.
 
 ### Site Owner
 
 As the site owner:
 
-1. I want to be able to provide my own recipes and recipes from guest contributers on a regular basis.
-2. I want to be able to get as many customers to follow us across our socials and sign up for our newsletter with a view to growing a membership with a view to possibly providing premium content further down the line.
-3. I want to be able to angage with users through our social media platforms so we can keep track of feedback to make an improvements necessary.
+1. I want to be able to update the site regularly with new and exciting treks that users may not have seen before.
+2. I want to be able to control all user conent, i.e editing and deleting users treks if necessary.
+3. I want to be able to grow the Onward & Upward community, encouraging our users to update the site with their own treks.
+4. I want to be able to engage with users through our social media platforms so we can keep track of feedback to make an improvements necessary.
 
 ___
 
@@ -42,99 +43,101 @@ ___
 
 ### Colour Scheme
 
-My aim with the colour scheme of the site was for the aesthetic to reflect the natural and healthy food which we are promoting. The green tones are associated with health, tranquility, power and nature. Greens are used to relax customers and promote environmental issues. 
+My aim with the colour scheme of the site was for the aesthetic to reflect nature. I want to keep it simple, so as not to distract the user from the content. The green tones are associated with health, tranquility, power and nature. Greens are used to relax customers and promote environmental issues. 
 
-The colour green stimulates harmony in your brain and encourages a balance leading to decisiveness. The Orange tones are to encourage feelings of joy, warmth, heat, sunshine, enthusiasm, health, stimulation and happiness.
+The colour green stimulates harmony in your brain and encourages a balance leading to decisiveness.
 
-My overall aim with the colour scheme of the site is to create an autumnal feel the aim being to comfort the user with a warm sense of familiarity. The images i have used were chosen to work in harmony with the overrall colour scheme.
+I also added a dark-grey-blue colour for the text and headings to provide balance and reduce the harshness of the black text.
 
-Colour scheme was used courtesy of the [Hook Agency](https://hookagency.com/).
-
-![Colour Scheme](/assets/docs/colour_scheme.jpg "Colour Scheme")
+![Colour Scheme](static/docs/color-swatch.png "Colour Scheme")
 
 ### Typography
 
-The fonts i have used were chosen to both eye catching and funtional. I think the PT Sans Narrow font adds and hint of pizzazz to the site with Open Sans a much more funtional counterbalance.
+The fonts i have used were chosen to both eye catching and funtional. I think the Josefin Sans font adds a stylish yet solid look to the site with Lato providing a much more functional look.
 
 [Google Fonts](https://fonts.google.com/): PT Sans Narrow & Open Sans
 
-![Google Fonts](assets/docs/googlefonts.png "Google Fonts")
+![Google Fonts](static/docs/Google-Fonts.png "Google Fonts")
 
 
 ## Wireframes 
 
 Here are my original wireframe mockups.
 
-* [Balsamiq Wireframes PDF](https://github.com/jeffgallagher86/milestone-project-1/blob/master/assets/Docs/Milestone%201%20Large%20screen.pdf)
+![Balsamiq Wireframes](static/docs/Home-Page.png "Balsamiq Wireframes")
+
+![Balsamiq Wireframes](static/docs/Individual-Trek-Page.png "Balsamiq Wireframes")
 
 
-I like to think i havent diverted too musch from my original idea for the site(aside from the various title changes). 
+I like to think i havent diverted too musch from my original idea for the site.
 
-* I had originally planned to have a carousel for my landing page but i found it to look outdated so i switched that out for the landing page with the gradient and text overlay or a more modern look and i am pleased with the result.
-
-* On the individual recipe page i have added a related recipe section on reccomendation from my mentor Akshat Garg, this was great advice which and something i should have thought of originally.about-me
+* Rather than a static hero image i opted for Materialize's Slider feature to add more dynamism to the Home page.
 
 * I think i have stayed true to my orginal idea with the look being similar across all screen resolutions.
 
 ## Mobile First Design
 
-* While building this site as the focus with bootstrap is a mobile first approach i was conscious of my page looking responsive across a variety of media devices. This was something i was extremely vigilent with. 
+* While building this site as the focus with Materialize is a mobile first approach i was conscious of my page looking responsive across a variety of media devices. This was something i was extremely vigilent with. 
 
-There were issues with the heading overlay on the hero image outsizing the screen resolution when switched to landscap mode on some of the smaller mobile devices. I remedied this with Media Queries as shown below.
-
----
-
-@media screen and (max-width: 800px) and (max-height: 450px) {
-    .hero-img-inner h1 {
-        font-size: 50px;
-    }
-
-    .hero-subheading {
-        margin: 10px;
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-width: 430px) and (max-height: 645px) {
-    .hero-img-inner h1 {
-        font-size: 50px;
-    }
-
-    .hero-subheading {
-        margin: 10px;
-        font-size: 20px;
-    }
-}
+* I found Materializes grid system to be very handy overrall with only some slight adjustments to be made with the below media query.
 
 ---
+@media screen and (max-width: 480px) {
+    .view-trek h2 {
+        font-size: 30px;
+        left: 20px;
+    }
 
-* There were also issues with the recipe thumbnails being too large for landscape mode on mobile devices. I tried to remedy this by reducing the cols but this made the columns un even and only one thumbnail wrapped below the other three on top. I then fixed this by including a column break so that two thumbnails would show above and below. I did this with the below code:
+    .view-trek h4 {
+        font-size: 25px;
+        left: 20px;
+    }
 
-`<div class="w-100 d-none d-sm-block d-lg-none"></div>`
+    nav .brand-logo {
+        font-size: 25px;
+        font-weight: 600;
+    }
 
----
+    .view-trek-headings {
+        display: inline-block;
+    }
+
+
+--------
 
 # Features
 
-* Eye catching mobile first design
+* Eye catching design with organised categories for admin to manage
 
-* Easy to navigate
+![Onward & Upward](static/docs/categories.png "Onward & Upward")
 
-* Social Media links
+* Sidenav for mobile
 
-* A sign-up form
+![Onward & Upward](static/docs/sidenav.png "Onward & Upward")
+
+* Features Section
+
+![Onward & Upward](static/docs/features.png "Onward & Upward")
+
+* CRUD Functionality for users and admin
+
+![Onward & Upward](static/docs/add-trek-form.png "Onward & Upward")
+
+![Onward & Upward](static/docs/join.png "Onward & Upward")
+
+![Onward & Upward](static/docs/trek-card.png "Onward & Upward")
 
 ## Future Scope
 
-* Introduction of video cooking demos & tutorials on site with links to socials.
+* Introduction of more user controls e.g allow user to edit their profile.
 
-* Detailed Nutritional information for each recipe.
+* Ratings and Comments feature for each trek.
 
-* Different categories for each type of meal, ingredient, region etc.
+* Integration of Google Maps API for trek locations.
 
-* Create a tagging system for each recipe which would link to recipes with similar tags.
+* Create a tagging system for each trek which would link to treks with similar tags.
 
-* Premium content subscription service.
+* 
 
 
 # Technologies Used
@@ -143,10 +146,16 @@ There were issues with the heading overlay on the hero image outsizing the scree
 
 * [HTML](https://en.wikipedia.org/wiki/HTML5)
 * [CSS](https://en.wikipedia.org/wiki/CSS)
+* [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 # Frameworks, Libraries, Programs and Sites.
 
-* [Bootstrap](https://getbootstrap.com/) - used for Navbar, grid system and styling throughout the site.
+* [Flask](https://materializecss.com/) - used as a framework in conjunction with Python
+
+* [MongoDB](https://materializecss.com/) - used for the Database
+
+* [Materialize](https://materializecss.com/) - used for Navbar, grid system and styling throughout the site.
 
 * [Photoshop](https://www.adobe.com/ie/products/photoshop.html) - for image editing.
 
@@ -156,13 +165,13 @@ There were issues with the heading overlay on the hero image outsizing the scree
 
 * [FontAwesome](https://fontawesome.com/) - for the icons used on the site.
 
-* [Google Fonts](https://fonts.google.com/) - for the fonts used.
-
-* [Unsplash](https://unsplash.com/) - for some of the images used on the site.
+* [Google Fonts](https://fonts.google.com/) - for the fonts used. 
 
 * [GitHub](https://github.com/) - to host and publish the site.
 
 * [Gitpod](https://gitpod.io/) - Used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+
+* [Heroku](https://www.heroku.com/) - Used for deployment of web app.
 
 # Testing
 

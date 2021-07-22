@@ -10,7 +10,7 @@
   <div class="col s12 m6 l4">
     <div class="card z-depth-2">
         <div class="card-image">
-            <img src="{{ trek.image_url }}">
+            <img src="{{ trek.image_url }}" alt="{{ trek.trek_name }}">
             <span class="card-title text-shadow">{{ trek.trek_name }}</span>
             <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
                 tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
@@ -54,7 +54,7 @@
 <div class="col s12 m6 l4">
   <div class="card z-depth-2">
       <div class="card-image">
-          <img src="{{ trek.image_url }}">
+          <img src="{{ trek.image_url }}" alt="{{ trek.trek_name }}">
           <span class="card-title text-shadow">{{ trek.trek_name }}</span>
           <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
               tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
@@ -98,7 +98,7 @@
 <div class="col s12 m6 l4">
   <div class="card z-depth-2">
       <div class="card-image">
-          <img src="{{ trek.image_url }}">
+          <img src="{{ trek.image_url }}" alt="{{ trek.trek_name }}">
           <span class="card-title text-shadow">{{ trek.trek_name }}</span>
           <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
               tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
