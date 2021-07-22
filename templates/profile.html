@@ -1,16 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="col s12 l6 card-panel profile-panel center-align profile-dashboard">
-    <h4>{{ fname.capitalize() }}'s Dashboard</h4>
-    <div class="row">
-        <div class="col s12 m6"><a class="waves-effect waves-light green darken-1 btn-large">Button</a></div>
-        <div class="col s12 m6"><a class="waves-effect waves-light green darken-1 btn-large">Button</a></div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6"><a class="waves-effect waves-light green darken-1 btn-large">Button</a></div>
-        <div class="col s12 m6"><a class="waves-effect waves-light green darken-1 btn-large">Button</a></div>
-    </div>
+<div class="col s12 l6 profile-panel center-align profile-dashboard">
+    <h4>{{ fname.capitalize() }}'s Profile</h4>
 </div>
 
 {% if treks|length > 0 %}
@@ -18,32 +10,40 @@
     <div class="col s12 card-panel profile-panel">
         <h4 class="green-text text-darken-1 center-align">Your Treks</h4>
         {% for trek in treks %}
-        <div class="col s12 m6">
+        <div class="col s12 m6 l4">
             <div class="card z-depth-2">
                 <div class="card-image">
                     <img src="{{ trek.image_url }}">
                     <span class="card-title text-shadow">{{ trek.trek_name }}</span>
-                    <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}"
-                        class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
-                              tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+                    <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                        tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
                     <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
                         class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
                             data-position="right" data-tooltip="Add to Favourites"></i></a>
                 </div>
                 <div class="card-content">
-                    <span class="card-sub-head">{{ trek.county_name }}</span>
-                    <a href="{{ url_for('get_treks') }}"
-                        class="card-category-tag right"><span>{{ trek.category_name }}</a>
-                    <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
+                    <a href="#">
+                        <p class="card-sub-head">{{ trek.county_name }}</p>
+                    </a>
+                    <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
+                    <span class="right">Rating<i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i></span>
+                    <p>
+                        <span>Length: <strong>{{ trek.trek_distance }}</strong></span>
                         <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
                     <p><em>Contributor: {{ trek.created_by }}</em></p>
                     {% if session.user|lower == trek.created_by|lower %}
                     <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
-                    <a href="{{ url_for('delete_trek', trek_id=trek._id) }}" class="btn-small red lighten-1">Delete</a>
+                    <a href="{{ url_for('delete_trek', trek_id=trek._id) }}"
+                        class="btn-small red lighten-1">Delete</a>
                     <!-- allows admin to edit/delete all submissions -->
                     {% elif session.user|lower == "admin" %}
                     <a href="{{ url_for('edit_trek', trek_id=trek._id) }}" class="btn-small green lighten-1">Edit</a>
-                    <a href="{{ url_for('delete_trek', trek_id=trek._id) }}" class="btn-small red lighten-1">Delete</a>
+                    <a href="{{ url_for('delete_trek', trek_id=trek._id) }}"
+                        class="btn-small red lighten-1">Delete</a>
                     {% endif %}
                 </div>
             </div>

@@ -26,6 +26,7 @@ mongo = PyMongo(app)
 ADMIN_USERNAME = "admin"
 
 
+# renders home template
 @app.route("/")
 @app.route("/home")
 def home():
@@ -35,6 +36,7 @@ def home():
         "home.html", treks=treks, categories=categories)
 
 
+# renders treks template
 @app.route("/treks")
 def get_treks():
     category = request.args.get('category')
@@ -46,6 +48,7 @@ def get_treks():
     return render_template("treks.html", treks=treks, category=category)
 
 
+# allows user to search mongoDB indexes for treks
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -53,6 +56,7 @@ def search():
     return render_template("treks.html", treks=treks, query=query)
 
 
+# enables user to add trek to favourites
 @app.route("/trek/<trek_id>/favourite")
 def favourite_trek(trek_id):
     try:
@@ -75,6 +79,7 @@ def favourite_trek(trek_id):
         return redirect(url_for("home"))
 
 
+# join page
 @app.route("/join", methods=["GET", "POST"])
 def join():
     if session.get('user'):
@@ -105,6 +110,7 @@ def join():
     return render_template("join.html")
 
 
+# login page
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if session.get('user'):
@@ -130,6 +136,7 @@ def login():
     return render_template("login.html")
 
 
+# renders users profile page
 @app.route("/profile", methods=["GET"])
 def profile():
     if not session.get("user"):
@@ -143,6 +150,7 @@ def profile():
     return render_template("profile.html", fname=fname, treks=treks)
 
 
+#  logs user out
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -151,6 +159,7 @@ def logout():
     return redirect(url_for("login"))
 
 
+# Adds trek to MongoDB
 @app.route("/trek/add", methods=["GET", "POST"])
 def add_trek():
     if request.method == "POST":
@@ -176,6 +185,7 @@ def add_trek():
         "add_trek.html", counties=counties, categories=categories)
 
 
+# Edit that specific trek
 @app.route("/trek/<trek_id>/edit", methods=["GET", "POST"])
 def edit_trek(trek_id):
     if request.method == "POST":
@@ -219,6 +229,7 @@ def is_user_admin():
     return False
 
 
+# Allows user to delete trek they have added
 @app.route("/trek/<trek_id>/delete")
 def delete_trek(trek_id):
     mongo.db.treks.remove({"_id": ObjectId(trek_id)})

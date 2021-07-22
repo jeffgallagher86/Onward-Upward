@@ -5,7 +5,6 @@ $(document).ready(function () {
   $('.modal').modal();
   $('.tooltipped').tooltip();
   $('select').formSelect();
-  $('.modal').modal();
   $('.slider').slider();
 
 // dropdown validation from CI Task Manager tutorial

@@ -102,8 +102,9 @@ main {
 
 /* -------- Profile Page ------------*/
 
-.profile-panel h3 {
+.profile-panel h4 {
     color: #455a64;
+    margin-top: 50px;
 }
 
 /* ---------- Trek Card -----------*/
@@ -114,7 +115,11 @@ main {
     color: #455a64;
 }
 
-.card-title {
+.card-title  {
+    font-weight: 600;
+}
+
+.card-sub-head {
     font-weight: 600;
 }
 
@@ -137,7 +142,7 @@ main {
     margin-left: 20px;
 }
 
-/* ----  view  trek --------- */
+/* ----  view trek --------- */
 .trek-img {
     position: relative;
     background-position: center;

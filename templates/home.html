@@ -4,28 +4,28 @@
 <div class="slider">
   <ul class="slides">
     <li>
-      <img src="/static/images/wicklow-mountains-trek.jpg"> <!-- random image -->
+      <img src="/static/images/wicklow-mountains-trek.jpg"> 
       <div class="caption center-align text-shadow">
         <h3>Welcome to Onward & Upward</h3>
         <h5 class="light grey-text text-lighten-3">Let's Explore</h5>
       </div>
     </li>
     <li>
-      <img src="/static/images/benbulben.jpg"> <!-- random image -->
+      <img src="/static/images/benbulben.jpg"> 
       <div class="caption left-align text-shadow">
         <h3>Discover the Best Treks in Ireland</h3>
         <h5 class="light grey-text text-lighten-3">Stunning scenery, spectacular views, all on your doorstep.</h5>
       </div>
     </li>
     <li>
-      <img src="/static/images/cuilcagh-boardwalk-steven-hylands-flickr.jpg"> <!-- random image -->
+      <img src="/static/images/cuilcagh-boardwalk-steven-hylands-flickr.jpg"> 
       <div class="caption right-align text-shadow">
         <h3>Add Your Own Treks</h3>
         <h5 class="light grey-text text-lighten-3">Share your favourite treks with our community.</h5>
       </div>
     </li>
     <li>
-      <img src="/static/images/croagh-patrick-stehpen-coyle-flickr.jpg"> <!-- random image -->
+      <img src="/static/images/croagh-patrick-stehpen-coyle-flickr.jpg"> 
       <div class="caption center-align text-shadow">
         <h3>Join Today</h3>
         <h5 class="light grey-text text-lighten-3">Join our ever growing community of trekkers.</h5>
@@ -49,35 +49,32 @@
   {% for trek in treks %}
   <div class="col s12 m6 l4">
     <div class="card z-depth-2">
-      <div class="card-image">
-        <img src="{{ trek.image_url }}">
-        <span class="card-title text-shadow">{{ trek.trek_name }}</span>
-        <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
-                  tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
-        <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
-          class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
-            data-position="right" data-tooltip="Add to Favourites"></i></a>
-      </div>
-      <div class="card-content">
-        <span class="card-sub-head">{{ trek.county_name }}</span>
-        <a href="{{ url_for('get_treks') }}" class="card-category-tag right"><span>{{ trek.category_name }}</a>
-        <p><span>Length: <strong>{{ trek.trek_distance }}</strong></span>
-          <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
-      </div>
+        <div class="card-image">
+            <img src="{{ trek.image_url }}">
+            <span class="card-title text-shadow">{{ trek.trek_name }}</span>
+            <a href="{{ url_for('favourite_trek', trek_id=trek._id) }}" class="btn-floating halfway-fab waves-effect waves-light green left"><i class="far fa-heart 
+                tooltipped" data-position="right" data-tooltip="Add to Favourites"></i></a>
+            <a href="{{ url_for('view_trek', trek_id=trek._id) }}"
+                class="btn-floating halfway-fab waves-effect waves-light green"><i class="fas fa-arrow-right"
+                    data-position="right" data-tooltip="Add to Favourites"></i></a>
+        </div>
+        <div class="card-content">
+            <a href="#">
+                <p class="card-sub-head">{{ trek.county_name }}</p>
+            </a>
+            <a href="#" class="card-category-tag">{{ trek.category_name }}</a>
+            <span class="right">Rating<i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i></span>
+            <p>
+                <span>Length: <strong>{{ trek.trek_distance }}</strong></span>
+                <span class="elevation-text">Elevation: <strong>{{ trek.trek_elevation }}</strong></span></p>
+            <p><em>Contributor: {{ trek.created_by }}</em></p>
+        </div>
     </div>
-  </div>
-  {% endfor %}
 </div>
-
-<div class="row home-categories">
-  {% for category in categories %}
-  <div class="col s12 m4">
-    <div class="card-panel">
-      <a href="{{ url_for('get_categories') }}">
-      <h4 class="center-align light-green-text text-darken-2">{{ category.category_name }}
-      </h4></a>
-    </div>
-  </div>
   {% endfor %}
 </div>
 
@@ -121,7 +118,7 @@
     <div class="col s12 m4">
       <h4>Favourite Treks</h4>
       <i class="far fa-heart home-icons"></i>
-      <p>Add all your favourite treks to your profile.</p>
+      <p>Add all your favourite treks.</p>
     </div>
   </div>
 
